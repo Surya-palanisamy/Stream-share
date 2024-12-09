@@ -21,7 +21,7 @@ A collaborative, real-time code editor where users can seamlessly code together.
 
 ## 🚀 Live Preview
 
-You can view the live preview of the project [here](https://stream-share.vercel.app/).
+You can view the live preview of the project [here](https://stream-share-code.vercel.app/).
 
 ## 💻 Tech Stack
 
