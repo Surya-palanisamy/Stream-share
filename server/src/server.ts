@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow the frontend URL here (update when in production)
+    origin: "https://stream-share-tau.vercel.app", // Allow the frontend URL here
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public"))); // Serve static files i
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Make sure this matches your frontend URL
+    origin: "https://stream-share-tau.vercel.app", // Update this to your frontend URL
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
