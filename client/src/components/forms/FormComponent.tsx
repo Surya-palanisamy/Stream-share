@@ -116,13 +116,13 @@ const FormComponent = () => {
                 />
                 <button
                     type="submit"
-                    className="mt-2 w-full rounded-md bg-primary px-8 py-3 text-lg font-semibold text-black"
+                    className="mt-2 w-full rounded-md bg-blue-400 px-8 py-3 text-lg font-semibold text-black"
                 >
                     Join
                 </button>
             </form>
             <button
-                className="cursor-pointer select-none underline"
+                className="cursor-pointer select-none underline text-[19px]"
                 onClick={createNewRoomId}
             >
                 Generate Unique Room Id
