@@ -10,7 +10,7 @@ Thank you for considering contributing to code sync! Follow the steps below to c
 
 2. **Clone the Repository:** Clone your forked repository to your local machine:
    ```bash
-   git clone https://github.com/<your_username>/Code-Sync.git
+   git clone https://github.com/<your_username>/stream-share.git
    ```
 
 ## Making Changes
