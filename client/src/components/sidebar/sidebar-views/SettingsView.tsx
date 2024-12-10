@@ -39,7 +39,7 @@ function SettingsView() {
             ".cm-editor > .cm-scroller",
         ) as HTMLElement;
         if (editor !== null) {
-            editor.style.fontFamily = `${fontFamily}, monospace`;
+            editor.style.fontFamily = `${fontFamily}, Source Code Pro`;
         }
     }, [fontFamily]);
 
