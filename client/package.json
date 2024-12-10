@@ -1,12 +1,11 @@
 {
     "name": "stream-share-client",
-    "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+        "start": "vite",
         "preview": "vite preview"
     },
     "dependencies": {

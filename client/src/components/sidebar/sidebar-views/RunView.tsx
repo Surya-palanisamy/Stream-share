@@ -8,7 +8,7 @@ import { PiCaretDownBold } from "react-icons/pi"
 function RunView() {
     const { viewHeight } = useResponsive()
     const {
-        setInput,
+       
         output,
         isRunning,
         supportedLanguages,
@@ -61,13 +61,9 @@ function RunView() {
                         className="absolute bottom-3 right-4 z-10 text-white"
                     />
                 </div>
-                <textarea
-                    className="min-h-[120px] w-full resize-none rounded-md border-none bg-darkHover p-2 text-white outline-none"
-                    placeholder="Write you input here..."
-                    onChange={(e) => setInput(e.target.value)}
-                />
+              
                 <button
-                    className="flex w-full justify-center rounded-md bg-primary p-2 font-bold text-black outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex w-full justify-center rounded-md bg-orange-600 p-2 font-bold text-white outline-none disabled:cursor-not-allowed disabled:opacity-50"
                     onClick={runCode}
                     disabled={isRunning}
                 >
@@ -77,7 +73,7 @@ function RunView() {
                     Output :
                     <button onClick={copyOutput} title="Copy Output">
                         <LuCopy
-                            size={18}
+                            size={19}
                             className="cursor-pointer text-white"
                         />
                     </button>

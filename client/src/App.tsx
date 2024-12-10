@@ -6,16 +6,15 @@ import HomePage from "./pages/HomePage"
 
 const App = () => {
     return (
-        <>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/editor/:roomId" element={<EditorPage />} />
-                </Routes>
-            </Router>
+        <Router >
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/editor/:roomId" element={<EditorPage />} />
+            </Routes>
+            {/* Components outside of Routes are rendered globally */}
             <Toast /> {/* Toast component from react-hot-toast */}
             <GitHubCorner />
-        </>
+        </Router>
     )
 }
 
