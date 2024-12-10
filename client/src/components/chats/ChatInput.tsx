@@ -1,23 +1,23 @@
-import { useAppContext } from "@/context/AppContext"
-import { useChatRoom } from "@/context/ChatContext"
-import { useSocket } from "@/context/SocketContext"
-import { ChatMessage } from "@/types/chat"
-import { SocketEvent } from "@/types/socket"
-import { formatDate } from "@/utils/formateDate"
-import { FormEvent, useRef } from "react"
-import { LuSendHorizontal } from "react-icons/lu"
-import { v4 as uuidV4 } from "uuid"
+import { useAppContext } from "@/context/AppContext";
+import { useChatRoom } from "@/context/ChatContext";
+import { useSocket } from "@/context/SocketContext";
+import { ChatMessage } from "@/types/chat";
+import { SocketEvent } from "@/types/socket";
+import { formatDate } from "@/utils/formateDate";
+import { FormEvent, useRef } from "react";
+import { LuSendHorizontal } from "react-icons/lu";
+import { v4 as uuidV4 } from "uuid";
 
 function ChatInput() {
-    const { currentUser } = useAppContext()
-    const { socket } = useSocket()
-    const { setMessages } = useChatRoom()
-    const inputRef = useRef<HTMLInputElement | null>(null)
+    const { currentUser } = useAppContext();
+    const { socket } = useSocket();
+    const { setMessages } = useChatRoom();
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const inputVal = inputRef.current?.value.trim()
+        const inputVal = inputRef.current?.value.trim();
 
         if (inputVal && inputVal.length > 0) {
             const message: ChatMessage = {
@@ -25,13 +25,13 @@ function ChatInput() {
                 message: inputVal,
                 username: currentUser.username,
                 timestamp: formatDate(new Date().toISOString()),
-            }
-            socket.emit(SocketEvent.SEND_MESSAGE, { message })
-            setMessages((messages) => [...messages, message])
+            };
+            socket.emit(SocketEvent.SEND_MESSAGE, { message });
+            setMessages((messages) => [...messages, message]);
 
-            if (inputRef.current) inputRef.current.value = ""
+            if (inputRef.current) inputRef.current.value = "";
         }
-    }
+    };
 
     return (
         <form
@@ -51,10 +51,7 @@ function ChatInput() {
                 <LuSendHorizontal size={24} />
             </button>
         </form>
-    )
+    );
 }
 
-export default ChatInput
-
-
-
+export default ChatInput;
