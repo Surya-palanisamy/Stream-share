@@ -80,10 +80,6 @@ You can view the live preview of the project [here](https://stream-share-code.ve
     http://localhost:5173/
     ```
 
-## 🔮 Features for next release
-
--   **Admin Permission:** Implement an admin permission system to manage user access levels and control over certain platform features.
-
 ## 🤝 Contribute
 
 We welcome contributions to make Strream share even better! Whether you're reporting a bug, suggesting a new feature, or fixing a typo, your input is valuable to us. Follow the [contribution guidelines](CONTRIBUTING.md) to get started.
@@ -107,6 +103,4 @@ Also, huge gratitude to Tldraw contributors for their amazing library. For more 
 
 -   [Tldraw Repository](https://github.com/tldraw/tldraw)
 -   [Tldraw Documentation](https://tldraw.dev/)
-
-## ✍️ About Developer
 
