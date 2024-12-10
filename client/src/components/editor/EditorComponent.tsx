@@ -1,12 +1,12 @@
-import { useFileSystem } from "@/context/FileContext"
-import useResponsive from "@/hooks/useResponsive"
-import cn from "classnames"
-import Editor from "./Editor"
-import FileTab from "./FileTab"
+import { useFileSystem } from "@/context/FileContext";
+import useResponsive from "@/hooks/useResponsive";
+import cn from "classnames";
+import Editor from "./Editor";
+import FileTab from "./FileTab";
 
 function EditorComponent() {
-    const { openFiles } = useFileSystem()
-    const { minHeightReached } = useResponsive()
+    const { openFiles } = useFileSystem();
+    const { minHeightReached } = useResponsive();
 
     if (openFiles.length <= 0) {
         return (
@@ -15,7 +15,7 @@ function EditorComponent() {
                     No file is currently open.
                 </h1>
             </div>
-        )
+        );
     }
 
     return (
@@ -28,7 +28,7 @@ function EditorComponent() {
             <FileTab />
             <Editor />
         </main>
-    )
+    );
 }
 
-export default EditorComponent
+export default EditorComponent;

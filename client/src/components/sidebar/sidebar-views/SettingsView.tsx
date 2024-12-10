@@ -1,10 +1,10 @@
-import Select from "@/components/common/Select"
-import { useSettings } from "@/context/SettingContext"
-import useResponsive from "@/hooks/useResponsive"
-import { editorFonts } from "@/resources/Fonts"
-import { editorThemes } from "@/resources/Themes"
-import { langNames } from "@uiw/codemirror-extensions-langs"
-import { ChangeEvent, useEffect } from "react"
+import Select from "@/components/common/Select";
+import { useSettings } from "@/context/SettingContext";
+import useResponsive from "@/hooks/useResponsive";
+import { editorFonts } from "@/resources/Fonts";
+import { editorThemes } from "@/resources/Themes";
+import { langNames } from "@uiw/codemirror-extensions-langs";
+import { ChangeEvent, useEffect } from "react";
 
 function SettingsView() {
     const {
@@ -19,29 +19,29 @@ function SettingsView() {
         showGitHubCorner,
         setShowGitHubCorner,
         resetSettings,
-    } = useSettings()
-    const { viewHeight } = useResponsive()
+    } = useSettings();
+    const { viewHeight } = useResponsive();
 
     const handleFontFamilyChange = (e: ChangeEvent<HTMLSelectElement>) =>
-        setFontFamily(e.target.value)
+        setFontFamily(e.target.value);
     const handleThemeChange = (e: ChangeEvent<HTMLSelectElement>) =>
-        setTheme(e.target.value)
+        setTheme(e.target.value);
     const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) =>
-        setLanguage(e.target.value)
+        setLanguage(e.target.value);
     const handleFontSizeChange = (e: ChangeEvent<HTMLSelectElement>) =>
-        setFontSize(parseInt(e.target.value))
+        setFontSize(parseInt(e.target.value));
     const handleShowGitHubCornerChange = (e: ChangeEvent<HTMLInputElement>) =>
-        setShowGitHubCorner(e.target.checked)
+        setShowGitHubCorner(e.target.checked);
 
     useEffect(() => {
         // Set editor font family
         const editor = document.querySelector(
             ".cm-editor > .cm-scroller",
-        ) as HTMLElement
+        ) as HTMLElement;
         if (editor !== null) {
-            editor.style.fontFamily = `${fontFamily}, monospace`
+            editor.style.fontFamily = `${fontFamily}, monospace`;
         }
-    }, [fontFamily])
+    }, [fontFamily]);
 
     return (
         <div
@@ -69,7 +69,7 @@ function SettingsView() {
                             <option key={size} value={size + 12}>
                                 {size + 12}
                             </option>
-                        )
+                        );
                     })}
                 </select>
             </div>
@@ -107,7 +107,7 @@ function SettingsView() {
                 Reset to default
             </button>
         </div>
-    )
+    );
 }
 
-export default SettingsView
+export default SettingsView;

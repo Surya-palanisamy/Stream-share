@@ -1,6 +1,6 @@
-import { Socket } from "socket.io-client"
+import { Socket } from "socket.io-client";
 
-type SocketId = string
+type SocketId = string;
 
 enum SocketEvent {
     JOIN_REQUEST = "join-request",
@@ -29,7 +29,7 @@ enum SocketEvent {
 }
 
 interface SocketContext {
-    socket: Socket
+    socket: Socket;
 }
 
-export { SocketEvent, SocketContext, SocketId }
+export { SocketEvent, SocketContext, SocketId };

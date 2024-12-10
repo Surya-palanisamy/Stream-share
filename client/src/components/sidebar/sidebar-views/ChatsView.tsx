@@ -1,9 +1,9 @@
-import ChatInput from "@/components/chats/ChatInput"
-import ChatList from "@/components/chats/ChatList"
-import useResponsive from "@/hooks/useResponsive"
+import ChatInput from "@/components/chats/ChatInput";
+import ChatList from "@/components/chats/ChatList";
+import useResponsive from "@/hooks/useResponsive";
 
 const ChatsView = () => {
-    const { viewHeight } = useResponsive()
+    const { viewHeight } = useResponsive();
 
     return (
         <div
@@ -16,7 +16,7 @@ const ChatsView = () => {
             {/* Chat input */}
             <ChatInput />
         </div>
-    )
-}
+    );
+};
 
-export default ChatsView
+export default ChatsView;

@@ -1,24 +1,24 @@
-import { useAppContext } from "@/context/AppContext"
-import { RemoteUser, USER_CONNECTION_STATUS } from "@/types/user"
-import Avatar from "react-avatar"
+import { useAppContext } from "@/context/AppContext";
+import { RemoteUser, USER_CONNECTION_STATUS } from "@/types/user";
+import Avatar from "react-avatar";
 
 function Users() {
-    const { users } = useAppContext()
+    const { users } = useAppContext();
 
     return (
         <div className="flex min-h-[200px] flex-grow justify-center overflow-y-auto py-2">
             <div className="flex h-full w-full flex-wrap items-start gap-x-2 gap-y-6">
                 {users.map((user) => {
-                    return <User key={user.socketId} user={user} />
+                    return <User key={user.socketId} user={user} />;
                 })}
             </div>
         </div>
-    )
+    );
 }
 
 const User = ({ user }: { user: RemoteUser }) => {
-    const { username, status } = user
-    const title = `${username} - ${status === USER_CONNECTION_STATUS.ONLINE ? "online" : "offline"}`
+    const { username, status } = user;
+    const title = `${username} - ${status === USER_CONNECTION_STATUS.ONLINE ? "online" : "offline"}`;
 
     return (
         <div
@@ -37,7 +37,7 @@ const User = ({ user }: { user: RemoteUser }) => {
                 }`}
             ></div>
         </div>
-    )
-}
+    );
+};
 
-export default Users
+export default Users;

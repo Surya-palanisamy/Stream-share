@@ -1,22 +1,22 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function ConnectionStatusPage() {
     return (
         <div className="flex h-screen min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
             <ConnectionError />
         </div>
-    )
+    );
 }
 
 const ConnectionError = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const reloadPage = () => {
-        window.location.reload()
-    }
+        window.location.reload();
+    };
 
     const gotoHomePage = () => {
-        navigate("/")
-    }
+        navigate("/");
+    };
 
     return (
         <>
@@ -38,7 +38,7 @@ const ConnectionError = () => {
                 </button>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default ConnectionStatusPage
+export default ConnectionStatusPage;

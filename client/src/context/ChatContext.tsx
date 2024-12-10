@@ -1,42 +1,44 @@
-import { ChatContext as ChatContextType, ChatMessage } from "@/types/chat"
-import { SocketEvent } from "@/types/socket"
+import { ChatContext as ChatContextType, ChatMessage } from "@/types/chat";
+import { SocketEvent } from "@/types/socket";
 import {
     ReactNode,
     createContext,
     useContext,
     useEffect,
     useState,
-} from "react"
-import { useSocket } from "./SocketContext"
+} from "react";
+import { useSocket } from "./SocketContext";
 
-const ChatContext = createContext<ChatContextType | null>(null)
+const ChatContext = createContext<ChatContextType | null>(null);
 
 export const useChatRoom = (): ChatContextType => {
-    const context = useContext(ChatContext)
+    const context = useContext(ChatContext);
     if (!context) {
-        throw new Error("useChatRoom must be used within a ChatContextProvider")
+        throw new Error(
+            "useChatRoom must be used within a ChatContextProvider",
+        );
     }
-    return context
-}
+    return context;
+};
 
 function ChatContextProvider({ children }: { children: ReactNode }) {
-    const { socket } = useSocket()
-    const [messages, setMessages] = useState<ChatMessage[]>([])
-    const [isNewMessage, setIsNewMessage] = useState<boolean>(false)
-    const [lastScrollHeight, setLastScrollHeight] = useState<number>(0)
+    const { socket } = useSocket();
+    const [messages, setMessages] = useState<ChatMessage[]>([]);
+    const [isNewMessage, setIsNewMessage] = useState<boolean>(false);
+    const [lastScrollHeight, setLastScrollHeight] = useState<number>(0);
 
     useEffect(() => {
         socket.on(
             SocketEvent.RECEIVE_MESSAGE,
             ({ message }: { message: ChatMessage }) => {
-                setMessages((messages) => [...messages, message])
-                setIsNewMessage(true)
+                setMessages((messages) => [...messages, message]);
+                setIsNewMessage(true);
             },
-        )
+        );
         return () => {
-            socket.off(SocketEvent.RECEIVE_MESSAGE)
-        }
-    }, [socket])
+            socket.off(SocketEvent.RECEIVE_MESSAGE);
+        };
+    }, [socket]);
 
     return (
         <ChatContext.Provider
@@ -51,8 +53,8 @@ function ChatContextProvider({ children }: { children: ReactNode }) {
         >
             {children}
         </ChatContext.Provider>
-    )
+    );
 }
 
-export { ChatContextProvider }
-export default ChatContext
+export { ChatContextProvider };
+export default ChatContext;

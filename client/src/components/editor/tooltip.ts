@@ -1,27 +1,27 @@
-import { RemoteUser } from "@/types/user"
-import { StateField } from "@codemirror/state"
-import { EditorView, showTooltip } from "@codemirror/view"
+import { RemoteUser } from "@/types/user";
+import { StateField } from "@codemirror/state";
+import { EditorView, showTooltip } from "@codemirror/view";
 
 export function tooltipField(users: RemoteUser[]) {
     return StateField.define({
         create: () => getCursorTooltips(users),
         update(tooltips, tr) {
-            if (!tr.docChanged && !tr.selection) return tooltips
-            return getCursorTooltips(users)
+            if (!tr.docChanged && !tr.selection) return tooltips;
+            return getCursorTooltips(users);
         },
         provide: (f) => showTooltip.computeN([f], (state) => state.field(f)),
-    })
+    });
 }
 
 export function getCursorTooltips(users: RemoteUser[]) {
     return users.map((user) => {
         if (!user.typing) {
-            return null
+            return null;
         }
-        let text = user.username
-        const pos = user.cursorPosition
+        let text = user.username;
+        const pos = user.cursorPosition;
         if (user) {
-            text = user.username
+            text = user.username;
         }
 
         return {
@@ -30,13 +30,13 @@ export function getCursorTooltips(users: RemoteUser[]) {
             strictSide: true,
             arrow: true,
             create: () => {
-                const dom = document.createElement("div")
-                dom.className = "cm-tooltip-cursor"
-                dom.textContent = text
-                return { dom }
+                const dom = document.createElement("div");
+                dom.className = "cm-tooltip-cursor";
+                dom.textContent = text;
+                return { dom };
             },
-        }
-    })
+        };
+    });
 }
 
 export const cursorTooltipBaseTheme = EditorView.baseTheme({
@@ -54,4 +54,4 @@ export const cursorTooltipBaseTheme = EditorView.baseTheme({
             borderTopColor: "transparent",
         },
     },
-})
+});

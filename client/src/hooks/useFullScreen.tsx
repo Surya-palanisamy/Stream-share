@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import screenfull from "screenfull"
+import { useEffect } from "react";
+import screenfull from "screenfull";
 
 function useFullScreen() {
     function detectMob() {
@@ -11,21 +11,21 @@ function useFullScreen() {
             /iPod/i,
             /BlackBerry/i,
             /Windows Phone/i,
-        ]
+        ];
 
         return toMatch.some((toMatchItem) => {
-            return navigator.userAgent.match(toMatchItem)
-        })
+            return navigator.userAgent.match(toMatchItem);
+        });
     }
-    const isMobile = detectMob()
+    const isMobile = detectMob();
 
     useEffect(() => {
-        if (!isMobile) return
+        if (!isMobile) return;
 
         if (screenfull.isEnabled) {
-            screenfull.request()
+            screenfull.request();
         }
-    }, [isMobile])
+    }, [isMobile]);
 }
 
-export default useFullScreen
+export default useFullScreen;

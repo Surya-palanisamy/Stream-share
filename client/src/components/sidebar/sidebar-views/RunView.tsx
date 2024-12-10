@@ -1,31 +1,30 @@
-import { useRunCode } from "@/context/RunCodeContext"
-import useResponsive from "@/hooks/useResponsive"
-import { ChangeEvent } from "react"
-import toast from "react-hot-toast"
-import { LuCopy } from "react-icons/lu"
-import { PiCaretDownBold } from "react-icons/pi"
+import { useRunCode } from "@/context/RunCodeContext";
+import useResponsive from "@/hooks/useResponsive";
+import { ChangeEvent } from "react";
+import toast from "react-hot-toast";
+import { LuCopy } from "react-icons/lu";
+import { PiCaretDownBold } from "react-icons/pi";
 
 function RunView() {
-    const { viewHeight } = useResponsive()
+    const { viewHeight } = useResponsive();
     const {
-       
         output,
         isRunning,
         supportedLanguages,
         selectedLanguage,
         setSelectedLanguage,
         runCode,
-    } = useRunCode()
+    } = useRunCode();
 
     const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        const lang = JSON.parse(e.target.value)
-        setSelectedLanguage(lang)
-    }
+        const lang = JSON.parse(e.target.value);
+        setSelectedLanguage(lang);
+    };
 
     const copyOutput = () => {
-        navigator.clipboard.writeText(output)
-        toast.success("Output copied to clipboard")
-    }
+        navigator.clipboard.writeText(output);
+        toast.success("Output copied to clipboard");
+    };
 
     return (
         <div
@@ -53,7 +52,7 @@ function RunView() {
                                                 ? ` (${lang.version})`
                                                 : "")}
                                     </option>
-                                )
+                                );
                             })}
                     </select>
                     <PiCaretDownBold
@@ -61,7 +60,7 @@ function RunView() {
                         className="absolute bottom-3 right-4 z-10 text-white"
                     />
                 </div>
-              
+
                 <button
                     className="flex w-full justify-center rounded-md bg-orange-600 p-2 font-bold text-white outline-none disabled:cursor-not-allowed disabled:opacity-50"
                     onClick={runCode}
@@ -85,7 +84,7 @@ function RunView() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default RunView
+export default RunView;

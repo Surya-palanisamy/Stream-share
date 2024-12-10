@@ -1,9 +1,9 @@
-import { useSettings } from "@/context/SettingContext"
-import useWindowDimensions from "@/hooks/useWindowDimensions"
+import { useSettings } from "@/context/SettingContext";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 function GitHubCorner() {
-    const { showGitHubCorner } = useSettings()
-    const { width } = useWindowDimensions()
+    const { showGitHubCorner } = useSettings();
+    const { width } = useWindowDimensions();
 
     return (
         <a
@@ -49,7 +49,7 @@ function GitHubCorner() {
                 </g>
             </svg>
         </a>
-    )
+    );
 }
 
-export default GitHubCorner
+export default GitHubCorner;

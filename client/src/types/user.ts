@@ -4,16 +4,16 @@ enum USER_CONNECTION_STATUS {
 }
 
 interface User {
-    username: string
-    roomId: string
+    username: string;
+    roomId: string;
 }
 
 interface RemoteUser extends User {
-    status: USER_CONNECTION_STATUS
-    cursorPosition: number
-    typing: boolean
-    currentFile: string
-    socketId: string
+    status: USER_CONNECTION_STATUS;
+    cursorPosition: number;
+    typing: boolean;
+    currentFile: string;
+    socketId: string;
 }
 
 enum USER_STATUS {
@@ -25,4 +25,4 @@ enum USER_STATUS {
     DISCONNECTED = "disconnected",
 }
 
-export { USER_CONNECTION_STATUS, USER_STATUS, RemoteUser, User }
+export { USER_CONNECTION_STATUS, USER_STATUS, RemoteUser, User };

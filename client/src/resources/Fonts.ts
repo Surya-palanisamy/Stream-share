@@ -9,6 +9,6 @@ const editorFonts: string[] = [
     "Source Code Pro",
     "Space Mono",
     "Ubuntu Mono",
-]
+];
 
-export { editorFonts }
+export { editorFonts };

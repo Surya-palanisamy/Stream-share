@@ -1,12 +1,12 @@
-import { useAppContext } from "@/context/AppContext"
-import useResponsive from "@/hooks/useResponsive"
-import { ACTIVITY_STATE } from "@/types/app"
-import DrawingEditor from "../drawing/DrawingEditor"
-import EditorComponent from "../editor/EditorComponent"
+import { useAppContext } from "@/context/AppContext";
+import useResponsive from "@/hooks/useResponsive";
+import { ACTIVITY_STATE } from "@/types/app";
+import DrawingEditor from "../drawing/DrawingEditor";
+import EditorComponent from "../editor/EditorComponent";
 
 function WorkSpace() {
-    const { viewHeight } = useResponsive()
-    const { activityState } = useAppContext()
+    const { viewHeight } = useResponsive();
+    const { activityState } = useAppContext();
 
     return (
         <div
@@ -19,7 +19,7 @@ function WorkSpace() {
                 <EditorComponent />
             )}
         </div>
-    )
+    );
 }
 
-export default WorkSpace
+export default WorkSpace;

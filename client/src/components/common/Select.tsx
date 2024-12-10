@@ -1,11 +1,11 @@
-import { ChangeEvent } from "react"
-import { PiCaretDownBold } from "react-icons/pi"
+import { ChangeEvent } from "react";
+import { PiCaretDownBold } from "react-icons/pi";
 
 interface SelectProps {
-    onChange: (e: ChangeEvent<HTMLSelectElement>) => void
-    value: string
-    options: string[]
-    title: string
+    onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+    value: string;
+    options: string[];
+    title: string;
 }
 
 function Select({ onChange, value, options, title }: SelectProps) {
@@ -18,15 +18,15 @@ function Select({ onChange, value, options, title }: SelectProps) {
                 onChange={onChange}
             >
                 {options.sort().map((option) => {
-                    const value = option
+                    const value = option;
                     const name =
-                        option.charAt(0).toUpperCase() + option.slice(1)
+                        option.charAt(0).toUpperCase() + option.slice(1);
 
                     return (
                         <option key={name} value={value}>
                             {name}
                         </option>
-                    )
+                    );
                 })}
             </select>
             <PiCaretDownBold
@@ -34,7 +34,7 @@ function Select({ onChange, value, options, title }: SelectProps) {
                 className="absolute bottom-3 right-4 z-10 text-white"
             />
         </div>
-    )
+    );
 }
 
-export default Select
+export default Select;

@@ -1,9 +1,9 @@
-import { FileSystemItem } from "./file"
+import { FileSystemItem } from "./file";
 
 interface FileTabContext {
-    activeFile: FileSystemItem | null
-    setActiveFile: (file: FileSystemItem) => void
-    changeActiveFile: (fileId: string) => void
+    activeFile: FileSystemItem | null;
+    setActiveFile: (file: FileSystemItem) => void;
+    changeActiveFile: (fileId: string) => void;
 }
 
-export { FileTabContext }
+export { FileTabContext };

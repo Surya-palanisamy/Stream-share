@@ -1,20 +1,20 @@
-import { useAppContext } from "@/context/AppContext"
-import { useSocket } from "@/context/SocketContext"
-import { SocketEvent, SocketId } from "@/types/socket"
-import { RemoteUser, USER_CONNECTION_STATUS } from "@/types/user"
-import { useCallback, useEffect } from "react"
+import { useAppContext } from "@/context/AppContext";
+import { useSocket } from "@/context/SocketContext";
+import { SocketEvent, SocketId } from "@/types/socket";
+import { RemoteUser, USER_CONNECTION_STATUS } from "@/types/user";
+import { useCallback, useEffect } from "react";
 
 function useUserActivity() {
-    const { setUsers } = useAppContext()
-    const { socket } = useSocket()
+    const { setUsers } = useAppContext();
+    const { socket } = useSocket();
 
     const handleUserVisibilityChange = useCallback(() => {
         if (document.visibilityState === "visible")
-            socket.emit(SocketEvent.USER_ONLINE, { socketId: socket.id })
+            socket.emit(SocketEvent.USER_ONLINE, { socketId: socket.id });
         else if (document.visibilityState === "hidden") {
-            socket.emit(SocketEvent.USER_OFFLINE, { socketId: socket.id })
+            socket.emit(SocketEvent.USER_OFFLINE, { socketId: socket.id });
         }
-    }, [socket])
+    }, [socket]);
 
     const handleUserOnline = useCallback(
         ({ socketId }: { socketId: SocketId }) => {
@@ -24,14 +24,14 @@ function useUserActivity() {
                         return {
                             ...user,
                             status: USER_CONNECTION_STATUS.ONLINE,
-                        }
+                        };
                     }
-                    return user
-                })
-            })
+                    return user;
+                });
+            });
         },
         [setUsers],
-    )
+    );
 
     const handleUserOffline = useCallback(
         ({ socketId }: { socketId: SocketId }) => {
@@ -41,51 +41,51 @@ function useUserActivity() {
                         return {
                             ...user,
                             status: USER_CONNECTION_STATUS.OFFLINE,
-                        }
+                        };
                     }
-                    return user
-                })
-            })
+                    return user;
+                });
+            });
         },
         [setUsers],
-    )
+    );
 
     const handleUserTyping = useCallback(
         ({ user }: { user: RemoteUser }) => {
             setUsers((users) => {
                 return users.map((u) => {
                     if (u.socketId === user.socketId) {
-                        return user
+                        return user;
                     }
-                    return u
-                })
-            })
+                    return u;
+                });
+            });
         },
         [setUsers],
-    )
+    );
 
     useEffect(() => {
         document.addEventListener(
             "visibilitychange",
             handleUserVisibilityChange,
-        )
+        );
 
-        socket.on(SocketEvent.USER_ONLINE, handleUserOnline)
-        socket.on(SocketEvent.USER_OFFLINE, handleUserOffline)
-        socket.on(SocketEvent.TYPING_START, handleUserTyping)
-        socket.on(SocketEvent.TYPING_PAUSE, handleUserTyping)
+        socket.on(SocketEvent.USER_ONLINE, handleUserOnline);
+        socket.on(SocketEvent.USER_OFFLINE, handleUserOffline);
+        socket.on(SocketEvent.TYPING_START, handleUserTyping);
+        socket.on(SocketEvent.TYPING_PAUSE, handleUserTyping);
 
         return () => {
             document.removeEventListener(
                 "visibilitychange",
                 handleUserVisibilityChange,
-            )
+            );
 
-            socket.off(SocketEvent.USER_ONLINE)
-            socket.off(SocketEvent.USER_OFFLINE)
-            socket.off(SocketEvent.TYPING_START)
-            socket.off(SocketEvent.TYPING_PAUSE)
-        }
+            socket.off(SocketEvent.USER_ONLINE);
+            socket.off(SocketEvent.USER_OFFLINE);
+            socket.off(SocketEvent.TYPING_START);
+            socket.off(SocketEvent.TYPING_PAUSE);
+        };
     }, [
         socket,
         setUsers,
@@ -93,7 +93,7 @@ function useUserActivity() {
         handleUserOnline,
         handleUserOffline,
         handleUserTyping,
-    ])
+    ]);
 }
 
-export default useUserActivity
+export default useUserActivity;

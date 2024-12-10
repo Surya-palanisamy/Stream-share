@@ -1,63 +1,63 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 export const useContextMenu = ({
     ref,
 }: {
-    ref: React.RefObject<HTMLDivElement>
+    ref: React.RefObject<HTMLDivElement>;
 }) => {
-    const [menuOpen, setMenuOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false);
     const [coords, setCoords] = useState({
         x: 0,
         y: 0,
-    })
+    });
 
     useEffect(() => {
-        const itemRef = ref.current
+        const itemRef = ref.current;
 
-        if (!itemRef) return
+        if (!itemRef) return;
 
         const closeMenu = () => {
-            setMenuOpen(false)
-        }
+            setMenuOpen(false);
+        };
 
         const handleRightClick = (e: MouseEvent) => {
             if (ref.current && ref.current.contains(e.target as Node)) {
-                setMenuOpen(true)
+                setMenuOpen(true);
                 setCoords({
                     x: e.pageX,
                     y: e.pageY,
-                })
+                });
             } else {
-                setMenuOpen(false)
+                setMenuOpen(false);
             }
-        }
+        };
 
         const handleItemContextMenu = (e: MouseEvent) => {
-            e.preventDefault()
-            setMenuOpen(true)
+            e.preventDefault();
+            setMenuOpen(true);
             setCoords({
                 x: e.pageX,
                 y: e.pageY,
-            })
-        }
+            });
+        };
 
-        itemRef.addEventListener("contextmenu", handleItemContextMenu)
+        itemRef.addEventListener("contextmenu", handleItemContextMenu);
 
-        document.addEventListener("click", closeMenu)
-        document.addEventListener("contextmenu", handleRightClick)
+        document.addEventListener("click", closeMenu);
+        document.addEventListener("contextmenu", handleRightClick);
 
         return () => {
-            itemRef.removeEventListener("contextmenu", handleItemContextMenu)
+            itemRef.removeEventListener("contextmenu", handleItemContextMenu);
 
-            document.removeEventListener("click", closeMenu)
-            document.removeEventListener("contextmenu", handleRightClick)
-        }
-    }, [ref])
+            document.removeEventListener("click", closeMenu);
+            document.removeEventListener("contextmenu", handleRightClick);
+        };
+    }, [ref]);
 
     return {
         menuOpen,
         setMenuOpen,
         coords,
         setCoords,
-    }
-}
+    };
+};

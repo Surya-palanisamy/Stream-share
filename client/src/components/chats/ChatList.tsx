@@ -1,6 +1,6 @@
-import { useAppContext } from "@/context/AppContext"
-import { useChatRoom } from "@/context/ChatContext"
-import { SyntheticEvent, useEffect, useRef } from "react"
+import { useAppContext } from "@/context/AppContext";
+import { useChatRoom } from "@/context/ChatContext";
+import { SyntheticEvent, useEffect, useRef } from "react";
 
 function ChatList() {
     const {
@@ -9,29 +9,29 @@ function ChatList() {
         setIsNewMessage,
         lastScrollHeight,
         setLastScrollHeight,
-    } = useChatRoom()
-    const { currentUser } = useAppContext()
-    const messagesContainerRef = useRef<HTMLDivElement | null>(null)
+    } = useChatRoom();
+    const { currentUser } = useAppContext();
+    const messagesContainerRef = useRef<HTMLDivElement | null>(null);
 
     const handleScroll = (e: SyntheticEvent) => {
-        const container = e.target as HTMLDivElement
-        setLastScrollHeight(container.scrollTop)
-    }
+        const container = e.target as HTMLDivElement;
+        setLastScrollHeight(container.scrollTop);
+    };
 
     // Scroll to bottom when messages change
     useEffect(() => {
-        if (!messagesContainerRef.current) return
+        if (!messagesContainerRef.current) return;
         messagesContainerRef.current.scrollTop =
-            messagesContainerRef.current.scrollHeight
-    }, [messages])
+            messagesContainerRef.current.scrollHeight;
+    }, [messages]);
 
     useEffect(() => {
         if (isNewMessage) {
-            setIsNewMessage(false)
+            setIsNewMessage(false);
         }
         if (messagesContainerRef.current)
-            messagesContainerRef.current.scrollTop = lastScrollHeight
-    }, [isNewMessage, setIsNewMessage, lastScrollHeight])
+            messagesContainerRef.current.scrollTop = lastScrollHeight;
+    }, [isNewMessage, setIsNewMessage, lastScrollHeight]);
 
     return (
         <div
@@ -61,10 +61,10 @@ function ChatList() {
                         </div>
                         <p className="py-1">{message.message}</p>
                     </div>
-                )
+                );
             })}
         </div>
-    )
+    );
 }
 
-export default ChatList
+export default ChatList;

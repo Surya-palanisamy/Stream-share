@@ -1,11 +1,11 @@
-import { FileSystemItem, Id } from "@/types/file"
-import { v4 as uuidv4 } from "uuid"
+import { FileSystemItem, Id } from "@/types/file";
+import { v4 as uuidv4 } from "uuid";
 
 const initialCode = `function sayHi() {
   console.log("👋 Hello world");
 }
 
-sayHi()`
+sayHi()`;
 
 export const initialFileStructure: FileSystemItem = {
     name: "root",
@@ -19,7 +19,7 @@ export const initialFileStructure: FileSystemItem = {
             content: initialCode,
         },
     ],
-}
+};
 
 export const findParentDirectory = (
     directory: FileSystemItem,
@@ -27,27 +27,27 @@ export const findParentDirectory = (
 ): FileSystemItem | null => {
     // Checking the current directory matches the parentDirName
     if (directory.id === parentDirId && directory.type === "directory") {
-        return directory
+        return directory;
     }
 
     // Recursively searching children if it's a directory
     if (directory.type === "directory" && directory.children) {
         for (const child of directory.children) {
-            const found = findParentDirectory(child, parentDirId)
+            const found = findParentDirectory(child, parentDirId);
             if (found) {
-                return found
+                return found;
             }
         }
     }
 
     // Return null if not found
-    return null
-}
+    return null;
+};
 
 export const isFileExist = (parentDir: FileSystemItem, name: string) => {
-    if (!parentDir.children) return false
-    return parentDir.children.some((file) => file.name === name)
-}
+    if (!parentDir.children) return false;
+    return parentDir.children.some((file) => file.name === name);
+};
 
 export const getFileById = (
     fileStructure: FileSystemItem,
@@ -55,20 +55,20 @@ export const getFileById = (
 ): FileSystemItem | null => {
     const findFile = (directory: FileSystemItem): FileSystemItem | null => {
         if (directory.id === fileId) {
-            return directory
+            return directory;
         } else if (directory.children) {
             for (const child of directory.children) {
-                const found = findFile(child)
+                const found = findFile(child);
                 if (found) {
-                    return found
+                    return found;
                 }
             }
         }
-        return null
-    }
+        return null;
+    };
 
-    return findFile(fileStructure)
-}
+    return findFile(fileStructure);
+};
 
 export const sortFileSystemItem = (item: FileSystemItem): FileSystemItem => {
     // Recursively sort children if it's a directory
@@ -76,17 +76,17 @@ export const sortFileSystemItem = (item: FileSystemItem): FileSystemItem => {
         // Separate directories and files
         let directories = item.children.filter(
             (child) => child.type === "directory",
-        )
-        const files = item.children.filter((child) => child.type === "file")
+        );
+        const files = item.children.filter((child) => child.type === "file");
 
         // Sort directories by name (A-Z)
-        directories.sort((a, b) => a.name.localeCompare(b.name))
+        directories.sort((a, b) => a.name.localeCompare(b.name));
 
         // Recursively sort nested directories
-        directories = directories.map((dir) => sortFileSystemItem(dir))
+        directories = directories.map((dir) => sortFileSystemItem(dir));
 
         // Sort files by name (A-Z)
-        files.sort((a, b) => a.name.localeCompare(b.name))
+        files.sort((a, b) => a.name.localeCompare(b.name));
 
         // Combine sorted directories and files
         item.children = [
@@ -94,8 +94,8 @@ export const sortFileSystemItem = (item: FileSystemItem): FileSystemItem => {
             ...directories.filter((dir) => !dir.name.startsWith(".")),
             ...files.filter((file) => file.name.startsWith(".")),
             ...files.filter((file) => !file.name.startsWith(".")),
-        ]
+        ];
     }
 
-    return item
-}
+    return item;
+};
