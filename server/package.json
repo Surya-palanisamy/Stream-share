@@ -2,10 +2,9 @@
   "name": "stream-share-server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
-    "start": " npm run build && node dist/server.js",
+    "start": " node dist/server.js",
     "build": "tsc && node dist/server.js"
   },
   "keywords": [],
