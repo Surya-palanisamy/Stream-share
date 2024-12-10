@@ -27,7 +27,7 @@ export const useSocket = (): SocketContextType => {
     return context;
 };
 
-const BACKEND_URL ="https://code-sync-server.glitch.me/";
+const BACKEND_URL = "https://stream-share-backend.glitch.me/";
 
 const SocketProvider = ({ children }: { children: ReactNode }) => {
     const {
