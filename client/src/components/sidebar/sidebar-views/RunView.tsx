@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRunCode } from "@/context/RunCodeContext";
 import useResponsive from "@/hooks/useResponsive";
 import { ChangeEvent } from "react";
