@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { useRunCode } from "@/context/RunCodeContext";
 import useResponsive from "@/hooks/useResponsive";
 import { ChangeEvent } from "react";
@@ -16,9 +17,18 @@ function RunView() {
         runCode,
     } = useRunCode();
 
+    // State to manage caret toggle
+    const [isSelectOpen, setIsSelectOpen] = useState(false);
+
     const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const lang = JSON.parse(e.target.value);
         setSelectedLanguage(lang);
+        // Close the select dropdown after selection
+        setIsSelectOpen(false);
+    };
+
+    const toggleSelect = () => {
+        setIsSelectOpen(!isSelectOpen);
     };
 
     const copyOutput = () => {
@@ -35,9 +45,10 @@ function RunView() {
             <div className="flex h-[90%] w-full flex-col items-end gap-2 md:h-[92%]">
                 <div className="relative w-full">
                     <select
-                        className="w-full rounded-md border-none bg-darkHover px-4 py-2 text-white outline-none"
+                        className="w-full appearance-none rounded-md border-none bg-darkHover px-4 py-2 text-white outline-none"
                         value={JSON.stringify(selectedLanguage)}
                         onChange={handleLanguageChange}
+                        onClick={toggleSelect}
                     >
                         {supportedLanguages
                             .sort((a, b) => (a.language > b.language ? 1 : -1))
@@ -57,7 +68,9 @@ function RunView() {
                     </select>
                     <PiCaretDownBold
                         size={16}
-                        className="absolute bottom-3 right-4 z-10 text-white"
+                        className={`absolute bottom-3 right-4 z-10 text-white transition-transform duration-300 ${
+                            isSelectOpen ? "rotate-180" : ""
+                        }`}
                     />
                 </div>
 

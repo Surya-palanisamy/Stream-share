@@ -27,7 +27,7 @@ const defaultSettings: Settings = {
     theme: "Dracula",
     language: "Javascript",
     fontSize: 16,
-    fontFamily: "Space Mono",
+    fontFamily: "Source Code Pro",
     showGitHubCorner: true,
 };
 
