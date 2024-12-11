@@ -7,7 +7,6 @@ const editorFonts: string[] = [
     "Jura",
     "Roboto Mono",
     "Source Code Pro",
-    "Space Mono",
     "Ubuntu Mono",
 ];
 

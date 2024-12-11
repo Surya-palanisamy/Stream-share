@@ -60,10 +60,7 @@ body {
     max-height: 93vh;
 }
 
-.cm-editor .cm-scroller {
-    font-family: "Space Mono", monospace;
-    /* min-height: 100vh; */
-}
+
 
 select {
     appearance: none;
