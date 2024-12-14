@@ -1,10 +1,10 @@
 import illustration from "@/assets/illustration.svg";
 import FormComponent from "@/components/forms/FormComponent";
-// import Footer from "@/components/common/Footer";
+import Footer from "@/components/common/Footer";
 
 function HomePage() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center gap-16">
+        <div className="flex lg:h-screen min-h-screen flex-col items-center justify-center gap-16 lg:overflow-hidden">
             <div className="my-12 flex h-full min-w-full flex-col items-center justify-evenly sm:flex-row sm:pt-0">
                 <div className="flex w-full animate-up-down justify-center sm:w-1/2 sm:pl-4">
                     <img
@@ -17,7 +17,7 @@ function HomePage() {
                     <FormComponent />
                 </div>
             </div>
-            {/* <Footer /> */}
+             <Footer /> 
         </div>
     );
 }

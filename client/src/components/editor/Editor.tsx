@@ -70,7 +70,7 @@ function Editor() {
             toast.error(
                 "Syntax highlighting is unavailable for this language. Please adjust the editor settings; it may be listed under a different name.",
                 {
-                    duration: 5000,
+                    duration: 2000,
                 },
             );
         }
